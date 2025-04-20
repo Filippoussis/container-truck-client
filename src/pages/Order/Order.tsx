@@ -1,5 +1,5 @@
 import { SubmitHandler, useFormContext } from 'react-hook-form';
-import { Button, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import {
   DateOfTransportation,
   TypeOfOperation,
@@ -29,7 +29,7 @@ const OrderConsumer = () => {
     console.log('toDateFromISO', new Date('2025-04-20'));
   };
   return (
-    <Container maxWidth="md" component="form" onSubmit={handleSubmit(onSubmit)}>
+    <Box component="form" onSubmit={handleSubmit(onSubmit)}>
       <Typography variant="h4" mb={3}>
         Заявка
       </Typography>
@@ -54,7 +54,7 @@ const OrderConsumer = () => {
           Очистить
         </Button>
       </Stack>
-    </Container>
+    </Box>
   );
 };
 

@@ -14,11 +14,11 @@ export const SignOfCargoDanger = () => {
         <FormControl {...field} error={!!error}>
           <FormLabel>Признак опасности</FormLabel>
           <ToggleButtonGroup {...field} exclusive>
-            <ToggleButton fullWidth value="dangerous">
-              Опасный
-            </ToggleButton>
             <ToggleButton fullWidth value="notDangerous">
               Неопасный
+            </ToggleButton>
+            <ToggleButton fullWidth value="dangerous">
+              Опасный
             </ToggleButton>
           </ToggleButtonGroup>
         </FormControl>
