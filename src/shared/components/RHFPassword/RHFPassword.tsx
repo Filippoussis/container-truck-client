@@ -9,7 +9,7 @@ import {
   InputAdornment,
 } from '@mui/material';
 
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Eye, EyeOff } from 'lucide-react';
 
 type Props = {
   label: string;
@@ -54,7 +54,7 @@ export const RHFPassword = ({ label, placeholder, autoFocus }: Props) => {
                   onMouseUp={handleMouseUpPassword}
                   edge="end"
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  {showPassword ? <Eye /> : <EyeOff />}
                 </IconButton>
               </InputAdornment>
             }
