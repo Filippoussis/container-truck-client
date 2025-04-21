@@ -10,11 +10,7 @@ const formSchema = z.object({
   password: zodPassword,
 });
 
-export const CreatePasswordProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     mode: 'onSubmit',
     resolver: zodResolver(formSchema),

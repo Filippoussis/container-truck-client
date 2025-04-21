@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { Layout } from './pages/Layout';
 import { Home } from './pages/Home';
+import { Login } from './pages/Login';
 import {
   Registration,
   CreateLogin,
@@ -20,10 +21,10 @@ const router = createBrowserRouter([
         // element: <PrivateRoute element={<Home />} />,
         element: <Home />,
       },
-      // {
-      //   path: '/login',
-      //   element: <Login />,
-      // },
+      {
+        path: '/login',
+        element: <Login />,
+      },
       {
         path: 'register',
         element: <Registration />,

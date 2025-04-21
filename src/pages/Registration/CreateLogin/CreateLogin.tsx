@@ -12,7 +12,7 @@ export const CreateLoginProviderConsumer = () => {
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={2}>
-        <RHFEmail label="Ваш Логин" placeholder="Введите свой Email..." />
+        <RHFEmail label="Ваш Логин" placeholder="Введите свой Email" />
         <Button variant="contained" type="submit">
           Создать учетную запись
         </Button>

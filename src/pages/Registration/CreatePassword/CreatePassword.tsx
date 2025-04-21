@@ -18,7 +18,7 @@ export const CreatePasswordConsumer = () => {
         <RHFEmail label="Ваш Логин" disabled />
         <RHFPassword
           label="Ваш Пароль"
-          placeholder="Придумайте и введите Пароль..."
+          placeholder="Придумайте и введите Пароль"
           autoFocus
         />
         <Button variant="contained" type="submit">
