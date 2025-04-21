@@ -1,4 +1,4 @@
-import { RHFAutocomplete } from '@/components';
+import { RHFAutocomplete } from '@/shared/components';
 import { Schema } from '../../types/schema';
 
 export const ContainerReceivingAddress = () => (
