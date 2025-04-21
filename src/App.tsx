@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'changePassword',
+        path: 'reset',
         element: <ChangePassword />,
         children: [
           {

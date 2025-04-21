@@ -33,6 +33,12 @@ const LoginConsumer = () => {
           <Link to={'/register'}>Зарегистрировать</Link>
         </Button>
       </Typography>
+      <Typography variant="body1">
+        Забыли пароль?{' '}
+        <Button variant="text">
+          <Link to={'/reset'}>Сбросить</Link>
+        </Button>
+      </Typography>
     </>
   );
 };

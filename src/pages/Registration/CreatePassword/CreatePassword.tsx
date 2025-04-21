@@ -22,7 +22,7 @@ const CreatePasswordConsumer = () => {
           autoFocus
         />
         <Button variant="contained" type="submit">
-          Подтвердить регистрацию
+          Создать учетную запись
         </Button>
       </Stack>
     </Box>

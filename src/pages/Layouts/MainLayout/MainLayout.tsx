@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Stack, Typography, ToggleButton } from '@mui/material';
 import { Funnel, Menu } from 'lucide-react';
 
@@ -14,7 +14,9 @@ export const MainLayout = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Typography variant="h3">LoLo</Typography>
+        <Typography component={Link} variant="h3" to={'/'}>
+          LoLo
+        </Typography>
         <Stack direction="row" spacing={1}>
           {isRoot && (
             <ToggleButton value="check">
