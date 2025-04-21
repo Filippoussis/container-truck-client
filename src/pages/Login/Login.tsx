@@ -4,7 +4,7 @@ import { Box, Button, Stack, Typography } from '@mui/material';
 import { RHFEmail, RHFPassword } from '@/shared/components';
 import { LoginProvider } from './LoginProvider';
 
-export const LoginConsumer = () => {
+const LoginConsumer = () => {
   const { handleSubmit } = useFormContext<{
     email: string;
     password: string;

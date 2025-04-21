@@ -1,9 +1,9 @@
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Box, Button, Stack } from '@mui/material';
 import { RHFEmail } from '@/shared/components';
-import { CreateLoginProvider } from './CreateLoginProvider';
+import { RequestPasswordProvider } from './RequestPasswordProvider';
 
-const CreateLoginConsumer = () => {
+const RequestPasswordConsumer = () => {
   const { handleSubmit } = useFormContext<{ email: string }>();
 
   const onSubmit: SubmitHandler<{ email: string }> = (data) =>
@@ -14,17 +14,17 @@ const CreateLoginConsumer = () => {
       <Stack spacing={2}>
         <RHFEmail label="Ваш Логин" placeholder="Введите свой Email" />
         <Button variant="contained" type="submit">
-          Создать учетную запись
+          Отправить
         </Button>
       </Stack>
     </Box>
   );
 };
 
-export const CreateLogin = () => {
+export const RequestPassword = () => {
   return (
-    <CreateLoginProvider>
-      <CreateLoginConsumer />
-    </CreateLoginProvider>
+    <RequestPasswordProvider>
+      <RequestPasswordConsumer />
+    </RequestPasswordProvider>
   );
 };

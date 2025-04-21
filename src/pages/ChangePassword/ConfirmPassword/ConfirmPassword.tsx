@@ -1,9 +1,9 @@
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Box, Button, Stack } from '@mui/material';
 import { RHFEmail, RHFPassword } from '@/shared/components';
-import { CreatePasswordProvider } from './CreatePasswordProvider';
+import { ConfirmPasswordProvider } from './ConfirmPasswordProvider';
 
-const CreatePasswordConsumer = () => {
+const ConfirmPasswordConsumer = () => {
   const { handleSubmit } = useFormContext<{
     email: string;
     password: string;
@@ -22,17 +22,17 @@ const CreatePasswordConsumer = () => {
           autoFocus
         />
         <Button variant="contained" type="submit">
-          Подтвердить регистрацию
+          Сменить пароль
         </Button>
       </Stack>
     </Box>
   );
 };
 
-export const CreatePassword = () => {
+export const ConfirmPassword = () => {
   return (
-    <CreatePasswordProvider>
-      <CreatePasswordConsumer />
-    </CreatePasswordProvider>
+    <ConfirmPasswordProvider>
+      <ConfirmPasswordConsumer />
+    </ConfirmPasswordProvider>
   );
 };

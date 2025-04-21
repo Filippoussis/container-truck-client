@@ -9,6 +9,11 @@ import {
   CreateLogin,
   CreatePassword,
 } from './pages/Registration';
+import {
+  ChangePassword,
+  RequestPassword,
+  ConfirmPassword,
+} from './pages/ChangePassword';
 import { Order } from './pages/Order';
 
 const router = createBrowserRouter([
@@ -22,7 +27,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/login',
+        path: 'login',
         element: <Login />,
       },
       {
@@ -39,10 +44,20 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: '/changePassword/*',
-      //   element: <ChangePassword />,
-      // },
+      {
+        path: 'changePassword',
+        element: <ChangePassword />,
+        children: [
+          {
+            index: true,
+            element: <RequestPassword />,
+          },
+          {
+            path: ':resetToken',
+            element: <ConfirmPassword />,
+          },
+        ],
+      },
       {
         path: 'order',
         element: <Order />,
