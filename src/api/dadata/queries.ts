@@ -1,13 +1,17 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { useQuery } from '@tanstack/react-query';
+
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: 'https://suggestions.dadata.ru',
+});
 
 const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fetchDadata = async (query: string) => {
   const token = '35bae7d9c1d6e6ab711fdfa9ca2a95bdc7f51042';
 
-  const { data } = await axios.post(
-    'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address',
+  const { data } = await axiosInstance.post(
+    'suggestions/api/4_1/rs/suggest/address',
     { query },
     {
       headers: {
