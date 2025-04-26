@@ -1,20 +1,25 @@
-import { Navigate } from 'react-router-dom';
 import { useQueryMe } from '@/api/users/queries';
+import { useAuthState } from '@/services/AuthProvider';
+import { useEffect, useState } from 'react';
 
 interface Props {
   element: React.ReactElement;
 }
 
 export const PrivateRoute: React.FC<Props> = ({ element }) => {
-  const { isPending, isSuccess } = useQueryMe();
+  const [shouldFetch, changeShouldFetch] = useState(false);
+  const { isAuthenticated } = useAuthState();
+  useQueryMe(shouldFetch);
 
-  if (isPending) {
-    return <p>Loading...</p>;
-  }
+  useEffect(() => {
+    if (!isAuthenticated) {
+      changeShouldFetch(true);
+    }
+  }, [isAuthenticated]);
 
-  if (isSuccess) {
+  if (isAuthenticated) {
     return element;
   }
 
-  return <Navigate to="/login" />;
+  return null;
 };
