@@ -2,20 +2,22 @@ import { Link } from 'react-router-dom';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { RHFEmail, RHFPassword } from '@/shared/components';
+import { useLoginUser } from '@/api/users/mutations';
 import { LoginProvider } from './LoginProvider';
 
 const LoginConsumer = () => {
+  const loginUser = useLoginUser();
   const { handleSubmit } = useFormContext<{
     email: string;
     password: string;
   }>();
 
   const onSubmit: SubmitHandler<{ email: string; password: string }> = (data) =>
-    console.log(data);
+    loginUser.mutate(data);
 
   return (
-    <>
-      <Typography variant="h4" mb={3}>
+    <Stack component="section" sx={{ height: '100%' }}>
+      <Typography variant="h4" component="h1" mb={3}>
         Вход в Личный аккаунт
       </Typography>
       <Box component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -27,19 +29,21 @@ const LoginConsumer = () => {
           </Button>
         </Stack>
       </Box>
-      <Typography variant="body1">
-        Eще нет аккаунта?{' '}
-        <Button variant="text">
-          <Link to={'/register'}>Зарегистрировать</Link>
-        </Button>
-      </Typography>
-      <Typography variant="body1">
-        Забыли пароль?{' '}
-        <Button variant="text">
-          <Link to={'/reset'}>Сбросить</Link>
-        </Button>
-      </Typography>
-    </>
+      <Box component="footer" sx={{ marginTop: 'auto', textAlign: 'center' }}>
+        <Typography variant="body1">
+          Eще нет аккаунта?{' '}
+          <Button variant="text">
+            <Link to={'/register'}>Зарегистрировать</Link>
+          </Button>
+        </Typography>
+        <Typography variant="body1">
+          Забыли пароль?{' '}
+          <Button variant="text">
+            <Link to={'/reset'}>Сбросить</Link>
+          </Button>
+        </Typography>
+      </Box>
+    </Stack>
   );
 };
 

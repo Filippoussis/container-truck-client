@@ -4,9 +4,9 @@ import { Home } from '@/pages/Home';
 import { Order } from '@/pages/Order';
 import { Login } from '@/pages/Login';
 import {
-  CreateLogin,
-  CreatePassword,
   Registration,
+  RequestRegistration,
+  ConfirmRegistration,
 } from '@/pages/Registration';
 import {
   ChangePassword,
@@ -44,11 +44,11 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <CreateLogin />,
+            element: <RequestRegistration />,
           },
           {
             path: ':activateToken',
-            element: <CreatePassword />,
+            element: <ConfirmRegistration />,
           },
         ],
       },

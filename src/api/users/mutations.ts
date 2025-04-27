@@ -16,3 +16,19 @@ export function useLoginUser() {
     },
   });
 }
+
+export function useRequestRegisterUser() {
+  return useMutation({
+    mutationFn: async (data: { email: string }) => {
+      await axiosInstance.post('/api/users/register', data);
+    },
+  });
+}
+
+export function useConfirmRegisterUser() {
+  return useMutation({
+    mutationFn: async (data: { email: string; password: string }) => {
+      await axiosInstance.patch('/api/users/register', data);
+    },
+  });
+}
