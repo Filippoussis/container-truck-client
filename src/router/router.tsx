@@ -3,6 +3,7 @@ import { RootLayout, MainLayout } from '@/pages/Layouts';
 import { Home } from '@/pages/Home';
 import { Order } from '@/pages/Order';
 import { Login } from '@/pages/Login';
+import { NotFound } from '@/pages/NotFound';
 import {
   Registration,
   RegistrationInit,
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: '',
