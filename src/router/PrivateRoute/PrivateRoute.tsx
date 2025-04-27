@@ -1,4 +1,4 @@
-import { useQueryMe } from '@/api/users/queries';
+import { useMe } from '@/api/users/queries';
 import { useAuthState } from '@/services/AuthProvider';
 import { useEffect, useState } from 'react';
 
@@ -9,7 +9,7 @@ interface Props {
 export const PrivateRoute: React.FC<Props> = ({ element }) => {
   const [shouldFetch, changeShouldFetch] = useState(false);
   const { isAuthenticated } = useAuthState();
-  useQueryMe(shouldFetch);
+  useMe(shouldFetch);
 
   useEffect(() => {
     if (!isAuthenticated) {
