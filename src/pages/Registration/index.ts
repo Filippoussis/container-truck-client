@@ -1,3 +1,3 @@
 export { Registration } from './Registration';
-export { RequestRegistration } from './RequestRegistration';
-export { ConfirmRegistration } from './ConfirmRegistration';
+export { RegistrationInit } from './RegistrationInit';
+export { RegistrationComplete } from './RegistrationComplete';

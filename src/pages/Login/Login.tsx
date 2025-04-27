@@ -2,18 +2,18 @@ import { Link } from 'react-router-dom';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { RHFEmail, RHFPassword } from '@/shared/components';
-import { useLoginUser } from '@/api/users/mutations';
+import { useLogin } from '@/api/users/mutations';
 import { LoginProvider } from './LoginProvider';
 
 const LoginConsumer = () => {
-  const loginUser = useLoginUser();
+  const { mutate } = useLogin();
   const { handleSubmit } = useFormContext<{
     email: string;
     password: string;
   }>();
 
   const onSubmit: SubmitHandler<{ email: string; password: string }> = (data) =>
-    loginUser.mutate(data);
+    mutate(data);
 
   return (
     <Stack component="section" sx={{ height: '100%' }}>

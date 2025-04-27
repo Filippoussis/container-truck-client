@@ -9,7 +9,7 @@ const formSchema = z.object({
   email: zodEmail,
 });
 
-export const ResetPasswordRequestProvider = ({
+export const RegistrationInitProvider = ({
   children,
 }: {
   children: React.ReactNode;

@@ -1,0 +1,1 @@
+export { RegistrationComplete } from './RegistrationComplete';

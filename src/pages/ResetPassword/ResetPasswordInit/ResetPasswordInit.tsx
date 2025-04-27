@@ -1,23 +1,22 @@
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Box, Button, Stack } from '@mui/material';
-import { RHFEmail } from '@/shared/components';
-import { useRequestRegisterUser } from '@/api/users/mutations';
 import { router } from '@/router';
-import { RequestRegistrationProvider } from './RequestRegistrationProvider';
-import { SuccessModal } from './components/SuccessModal';
+import { useResetPasswordInit } from '@/api/users/mutations';
+import { RHFEmail } from '@/shared/components';
+import { SuccessEmailConfirmModal } from '@/components/modals';
+import { ResetPasswordInitProvider } from './ResetPasswordInitProvider';
 
-const RequestRegistrationConsumer = () => {
+const ResetPasswordInitConsumer = () => {
   const [open, setOpen] = useState(true);
-  const { mutate, isPending, isSuccess } = useRequestRegisterUser();
-  const { getValues, handleSubmit } = useFormContext<{
-    email: string;
-  }>();
+  const { mutate, isPending, isSuccess } = useResetPasswordInit();
+  const { getValues, handleSubmit } = useFormContext<{ email: string }>();
 
   const onClose = () => {
     setOpen(false);
     router.navigate('/login');
   };
+
   const onSubmit: SubmitHandler<{ email: string }> = (data) => mutate(data);
 
   useEffect(() => {
@@ -36,15 +35,19 @@ const RequestRegistrationConsumer = () => {
           </Button>
         </Stack>
       </Box>
-      <SuccessModal open={open} onClose={onClose} email={getValues().email} />
+      <SuccessEmailConfirmModal
+        open={open}
+        email={getValues().email}
+        onClose={onClose}
+      />
     </>
   );
 };
 
-export const RequestRegistration = () => {
+export const ResetPasswordInit = () => {
   return (
-    <RequestRegistrationProvider>
-      <RequestRegistrationConsumer />
-    </RequestRegistrationProvider>
+    <ResetPasswordInitProvider>
+      <ResetPasswordInitConsumer />
+    </ResetPasswordInitProvider>
   );
 };

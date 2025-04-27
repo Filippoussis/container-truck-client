@@ -1,3 +1,3 @@
 export { ResetPassword } from './ResetPassword';
-export { ResetPasswordRequest } from './ResetPasswordRequest';
-export { ResetPasswordConfirm } from './ResetPasswordConfirm';
+export { ResetPasswordInit } from './ResetPasswordInit';
+export { ResetPasswordComplete } from './ResetPasswordComplete';

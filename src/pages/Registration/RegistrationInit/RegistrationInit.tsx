@@ -2,21 +2,22 @@ import { useEffect, useState } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Box, Button, Stack } from '@mui/material';
 import { router } from '@/router';
+import { useRegisterInit } from '@/api/users/mutations';
 import { RHFEmail } from '@/shared/components';
-import { useResetPasswordRequest } from '@/api/users/mutations';
 import { SuccessEmailConfirmModal } from '@/components/modals';
-import { ResetPasswordRequestProvider } from './ResetPasswordRequestProvider';
+import { RegistrationInitProvider } from './RegistrationInitProvider';
 
-const ResetPasswordRequestConsumer = () => {
+const RegistrationInitConsumer = () => {
   const [open, setOpen] = useState(true);
-  const { mutate, isPending, isSuccess } = useResetPasswordRequest();
-  const { getValues, handleSubmit } = useFormContext<{ email: string }>();
+  const { mutate, isPending, isSuccess } = useRegisterInit();
+  const { getValues, handleSubmit } = useFormContext<{
+    email: string;
+  }>();
 
   const onClose = () => {
     setOpen(false);
     router.navigate('/login');
   };
-
   const onSubmit: SubmitHandler<{ email: string }> = (data) => mutate(data);
 
   useEffect(() => {
@@ -44,10 +45,10 @@ const ResetPasswordRequestConsumer = () => {
   );
 };
 
-export const ResetPasswordRequest = () => {
+export const RegistrationInit = () => {
   return (
-    <ResetPasswordRequestProvider>
-      <ResetPasswordRequestConsumer />
-    </ResetPasswordRequestProvider>
+    <RegistrationInitProvider>
+      <RegistrationInitConsumer />
+    </RegistrationInitProvider>
   );
 };

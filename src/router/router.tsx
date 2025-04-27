@@ -5,13 +5,13 @@ import { Order } from '@/pages/Order';
 import { Login } from '@/pages/Login';
 import {
   Registration,
-  RequestRegistration,
-  ConfirmRegistration,
+  RegistrationInit,
+  RegistrationComplete,
 } from '@/pages/Registration';
 import {
   ResetPassword,
-  ResetPasswordRequest,
-  ResetPasswordConfirm,
+  ResetPasswordInit,
+  ResetPasswordComplete,
 } from '@/pages/ResetPassword';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -44,11 +44,11 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <RequestRegistration />,
+            element: <RegistrationInit />,
           },
           {
             path: ':activateToken',
-            element: <ConfirmRegistration />,
+            element: <RegistrationComplete />,
           },
         ],
       },
@@ -58,11 +58,11 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <ResetPasswordRequest />,
+            element: <ResetPasswordInit />,
           },
           {
             path: ':resetToken',
-            element: <ResetPasswordConfirm />,
+            element: <ResetPasswordComplete />,
           },
         ],
       },
