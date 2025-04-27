@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { router } from '@/router';
 import { zodEmail, zodPassword } from '@/shared/validations/auth';
 // import { DevTool } from '@hookform/devtools';
 
@@ -30,6 +31,7 @@ export const RegistrationCompleteProvider = ({
       form.setValue('email', email);
     } catch (e) {
       console.info(e);
+      router.navigate('/not-found');
     }
   }, [activateToken, form]);
 

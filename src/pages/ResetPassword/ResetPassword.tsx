@@ -5,7 +5,7 @@ export const ResetPassword = () => {
   return (
     <Stack component="section" sx={{ height: '100%' }}>
       <Typography variant="h4" mb={3}>
-        Смена пароля
+        Сброс пароля
       </Typography>
       <Outlet />
       <Box component="footer" sx={{ marginTop: 'auto', textAlign: 'center' }}>

@@ -8,7 +8,7 @@ import { SuccessEmailConfirmModal } from '@/components/modals';
 import { RegistrationInitProvider } from './RegistrationInitProvider';
 
 const RegistrationInitConsumer = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const { mutate, isPending, isSuccess } = useRegisterInit();
   const { getValues, handleSubmit } = useFormContext<{
     email: string;

@@ -8,7 +8,7 @@ import { SuccessPasswordConfirmModal } from '@/components/modals';
 import { RegistrationCompleteProvider } from './RegistrationCompleteProvider';
 
 const RegistrationCompleteConsumer = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const { mutate, isPending, isSuccess } = useRegisterComplete();
   const { getValues, handleSubmit } = useFormContext<{
     email: string;

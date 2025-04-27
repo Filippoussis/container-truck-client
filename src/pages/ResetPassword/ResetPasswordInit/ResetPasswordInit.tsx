@@ -8,7 +8,7 @@ import { SuccessEmailConfirmModal } from '@/components/modals';
 import { ResetPasswordInitProvider } from './ResetPasswordInitProvider';
 
 const ResetPasswordInitConsumer = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const { mutate, isPending, isSuccess } = useResetPasswordInit();
   const { getValues, handleSubmit } = useFormContext<{ email: string }>();
 
