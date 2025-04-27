@@ -1,0 +1,1 @@
+export { SuccessPasswordConfirmModal } from './SuccessPasswordConfirmModal';

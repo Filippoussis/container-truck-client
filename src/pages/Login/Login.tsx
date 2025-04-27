@@ -39,7 +39,7 @@ const LoginConsumer = () => {
         <Typography variant="body1">
           Забыли пароль?{' '}
           <Button variant="text">
-            <Link to={'/reset'}>Сбросить</Link>
+            <Link to={'/reset-password'}>Сбросить</Link>
           </Button>
         </Typography>
       </Box>

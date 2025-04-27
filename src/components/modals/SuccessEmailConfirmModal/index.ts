@@ -1,0 +1,1 @@
+export { SuccessEmailConfirmModal } from './SuccessEmailConfirmModal';

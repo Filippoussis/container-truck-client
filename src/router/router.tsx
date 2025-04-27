@@ -9,10 +9,10 @@ import {
   ConfirmRegistration,
 } from '@/pages/Registration';
 import {
-  ChangePassword,
-  ConfirmPassword,
-  RequestPassword,
-} from '@/pages/ChangePassword';
+  ResetPassword,
+  ResetPasswordRequest,
+  ResetPasswordConfirm,
+} from '@/pages/ResetPassword';
 import { PrivateRoute } from './PrivateRoute';
 
 export const router = createBrowserRouter([
@@ -53,16 +53,16 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: 'reset',
-        element: <ChangePassword />,
+        path: 'reset-password',
+        element: <ResetPassword />,
         children: [
           {
             index: true,
-            element: <RequestPassword />,
+            element: <ResetPasswordRequest />,
           },
           {
             path: ':resetToken',
-            element: <ConfirmPassword />,
+            element: <ResetPasswordConfirm />,
           },
         ],
       },

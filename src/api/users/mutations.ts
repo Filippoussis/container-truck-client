@@ -32,3 +32,19 @@ export function useConfirmRegisterUser() {
     },
   });
 }
+
+export function useResetPasswordRequest() {
+  return useMutation({
+    mutationFn: async (data: { email: string }) => {
+      await axiosInstance.post('/api/users/reset-password', data);
+    },
+  });
+}
+
+export function useResetPasswordConfirm() {
+  return useMutation({
+    mutationFn: async (data: { email: string; password: string }) => {
+      await axiosInstance.patch('/api/users/reset-password', data);
+    },
+  });
+}

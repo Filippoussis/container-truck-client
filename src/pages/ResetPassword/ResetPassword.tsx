@@ -1,7 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-export const ChangePassword = () => {
+export const ResetPassword = () => {
   return (
     <Stack component="section" sx={{ height: '100%' }}>
       <Typography variant="h4" mb={3}>
