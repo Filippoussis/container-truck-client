@@ -17,6 +17,20 @@ export function useLogin() {
   });
 }
 
+export function useLogout() {
+  const { onAuthenticate } = useAuthAPI();
+  return useMutation({
+    mutationFn: async () => {
+      await axiosInstance.post('/api/users/logout');
+    },
+
+    onSuccess: () => {
+      onAuthenticate(false);
+      router.navigate('/login');
+    },
+  });
+}
+
 export function useRegisterInit() {
   return useMutation({
     mutationFn: async (data: { email: string }) => {

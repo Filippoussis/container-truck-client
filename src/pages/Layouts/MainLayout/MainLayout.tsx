@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Stack, Typography, ToggleButton } from '@mui/material';
-import { Funnel, Menu } from 'lucide-react';
+import { Funnel } from 'lucide-react';
+import { Menu } from '@/components/Menu';
 
 export const MainLayout = () => {
   const { pathname } = useLocation();
@@ -23,9 +24,7 @@ export const MainLayout = () => {
               <Funnel />
             </ToggleButton>
           )}
-          <ToggleButton value="check">
-            <Menu />
-          </ToggleButton>
+          <Menu />
         </Stack>
       </Stack>
       <Outlet />
