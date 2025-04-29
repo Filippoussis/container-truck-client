@@ -2,9 +2,11 @@ import { useMutation } from '@tanstack/react-query';
 import { axiosInstance } from '@/libs/axios';
 import { router } from '@/router';
 import { useAuthAPI } from '@/services/AuthProvider';
+import { useSnackAPI } from '@/services/SnackProvider';
 
 export function useLogin() {
   const { onAuthenticate } = useAuthAPI();
+  const { showSnack } = useSnackAPI();
   return useMutation({
     mutationFn: async (data: { email: string; password: string }) => {
       await axiosInstance.post('/api/users/login', data);
@@ -13,6 +15,14 @@ export function useLogin() {
     onSuccess: () => {
       onAuthenticate(true);
       router.navigate('/');
+    },
+
+    onError: () => {
+      showSnack({
+        open: true,
+        message: 'Неверный логин или пароль',
+        severity: 'error',
+      });
     },
   });
 }
