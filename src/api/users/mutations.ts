@@ -51,8 +51,21 @@ export function useRegisterInit() {
 
 export function useRegisterComplete() {
   return useMutation({
-    mutationFn: async (data: { email: string; password: string }) => {
-      await axiosInstance.patch('/api/users/register', data);
+    mutationFn: async (data: {
+      email: string;
+      password: string;
+      activateToken: string;
+    }) => {
+      const { activateToken, ...restData } = data;
+      await axiosInstance.patch(
+        '/api/users/register',
+        { ...restData },
+        {
+          headers: {
+            Authorization: `Bearer ${activateToken}`,
+          },
+        },
+      );
     },
   });
 }
