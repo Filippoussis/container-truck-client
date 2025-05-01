@@ -9,18 +9,18 @@ export const schema = z.object({
   weightOfCargo: z.string().min(1),
   signOfCargoDanger: z.string().min(1),
   warehouseAddress: z.object({
-    data: z.object({}),
+    data: z.object({ city: z.string().optional() }),
     value: z.string().min(1),
     unrestricted_value: z.string(),
   }),
   containerDeliveryAddress: z.object({
-    data: z.object({}),
-    value: z.string(),
+    data: z.object({ city: z.string().optional() }),
+    value: z.string().min(1),
     unrestricted_value: z.string(),
   }),
   containerReceivingAddress: z.object({
-    data: z.object({}),
-    value: z.string(),
+    data: z.object({ city: z.string().optional() }),
+    value: z.string().min(1),
     unrestricted_value: z.string(),
   }),
 });
@@ -36,10 +36,18 @@ export const defaultValues: Schema = {
   weightOfCargo: '',
   signOfCargoDanger: '',
   warehouseAddress: {
-    data: {},
+    data: { city: '' },
     value: '',
     unrestricted_value: '',
   },
-  containerDeliveryAddress: { data: {}, value: '', unrestricted_value: '' },
-  containerReceivingAddress: { data: {}, value: '', unrestricted_value: '' },
+  containerDeliveryAddress: {
+    data: { city: '' },
+    value: '',
+    unrestricted_value: '',
+  },
+  containerReceivingAddress: {
+    data: { city: '' },
+    value: '',
+    unrestricted_value: '',
+  },
 };

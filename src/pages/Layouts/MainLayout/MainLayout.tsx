@@ -14,6 +14,7 @@ export const MainLayout = () => {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
+        mb={2}
       >
         <Typography component={Link} variant="h3" to={'/'}>
           LoLo

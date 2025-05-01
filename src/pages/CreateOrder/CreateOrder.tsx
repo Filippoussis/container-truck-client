@@ -1,5 +1,6 @@
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Box, Button, Stack, Typography } from '@mui/material';
+import { useCreateOrder } from '@/api/orders/mutations';
 import {
   DateOfTransportation,
   TypeOfOperation,
@@ -14,10 +15,9 @@ import {
 } from './components';
 import { CreateOrderProvider } from './CreateOrderProvider';
 import { Schema, defaultValues } from './types/schema';
-import { useCreateOrder } from '@/api/orders/mutations';
 
 const CreateOrderConsumer = () => {
-  const createOrder = useCreateOrder();
+  const { mutate, isPending } = useCreateOrder();
   const { reset, handleSubmit } = useFormContext<Schema>();
 
   const handleReset = () => {
@@ -25,9 +25,6 @@ const CreateOrderConsumer = () => {
   };
 
   const onSubmit: SubmitHandler<Schema> = (data) => {
-    console.log('toUTCString', data.dateOfTransportation.toUTCString());
-    console.log('toISOString', data.dateOfTransportation.toISOString());
-    console.log('toDateFromISO', new Date('2025-04-20'));
     const {
       dateOfTransportation,
       warehouseAddress,
@@ -35,11 +32,14 @@ const CreateOrderConsumer = () => {
       containerReceivingAddress,
       ...restData
     } = data;
-    createOrder.mutate({
+    mutate({
       dateOfTransportation: dateOfTransportation.toISOString(),
       warehouseAddress: warehouseAddress.value,
-      containerDeliveryAddress: containerDeliveryAddress.value,
+      warehouseCity: warehouseAddress.data.city || '',
       containerReceivingAddress: containerReceivingAddress.value,
+      containerReceivingCity: containerReceivingAddress.data.city || '',
+      containerDeliveryAddress: containerDeliveryAddress.value,
+      containerDeliveryCity: containerDeliveryAddress.data.city || '',
       ...restData,
     });
   };
@@ -62,7 +62,7 @@ const CreateOrderConsumer = () => {
         <ContainerReceivingAddress />
         <WarehouseAddress />
         <ContainerDeliveryAddress />
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" loading={isPending}>
           Отправить
         </Button>
         <Button variant="outlined" onClick={handleReset}>
