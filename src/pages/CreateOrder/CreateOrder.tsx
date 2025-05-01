@@ -12,10 +12,12 @@ import {
   ContainerDeliveryAddress,
   ContainerReceivingAddress,
 } from './components';
-import { OrderProvider } from './OrderProvider';
+import { CreateOrderProvider } from './CreateOrderProvider';
 import { Schema, defaultValues } from './types/schema';
+import { useCreateOrder } from '@/api/orders/mutations';
 
-const OrderConsumer = () => {
+const CreateOrderConsumer = () => {
+  const createOrder = useCreateOrder();
   const { reset, handleSubmit } = useFormContext<Schema>();
 
   const handleReset = () => {
@@ -23,10 +25,23 @@ const OrderConsumer = () => {
   };
 
   const onSubmit: SubmitHandler<Schema> = (data) => {
-    console.log('data', data);
     console.log('toUTCString', data.dateOfTransportation.toUTCString());
     console.log('toISOString', data.dateOfTransportation.toISOString());
     console.log('toDateFromISO', new Date('2025-04-20'));
+    const {
+      dateOfTransportation,
+      warehouseAddress,
+      containerDeliveryAddress,
+      containerReceivingAddress,
+      ...restData
+    } = data;
+    createOrder.mutate({
+      dateOfTransportation: dateOfTransportation.toISOString(),
+      warehouseAddress: warehouseAddress.value,
+      containerDeliveryAddress: containerDeliveryAddress.value,
+      containerReceivingAddress: containerReceivingAddress.value,
+      ...restData,
+    });
   };
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -58,10 +73,10 @@ const OrderConsumer = () => {
   );
 };
 
-export const Order = () => {
+export const CreateOrder = () => {
   return (
-    <OrderProvider>
-      <OrderConsumer />
-    </OrderProvider>
+    <CreateOrderProvider>
+      <CreateOrderConsumer />
+    </CreateOrderProvider>
   );
 };

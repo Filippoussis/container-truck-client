@@ -4,7 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DevTool } from '@hookform/devtools';
 import { schema, Schema, defaultValues } from './types/schema';
 
-export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
+export const CreateOrderProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const form = useForm<Schema>({
     mode: 'onSubmit',
     resolver: zodResolver(schema),

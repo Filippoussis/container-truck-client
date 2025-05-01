@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { RootLayout, MainLayout } from '@/pages/Layouts';
 import { Home } from '@/pages/Home';
-import { Order } from '@/pages/Order';
+import { CreateOrder } from '@/pages/CreateOrder';
 import { Login } from '@/pages/Login';
 import { NotFound } from '@/pages/NotFound';
 import {
@@ -31,8 +31,8 @@ export const router = createBrowserRouter([
             element: <Home />,
           },
           {
-            path: 'order',
-            element: <Order />,
+            path: 'create-order',
+            element: <CreateOrder />,
           },
         ],
       },

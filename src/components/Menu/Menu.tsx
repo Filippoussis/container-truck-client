@@ -70,7 +70,9 @@ export const Menu = () => {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleClickMenuItem('/order')}>
+              <ListItemButton
+                onClick={() => handleClickMenuItem('/create-order')}
+              >
                 <ListItemIcon>
                   <Grid2x2Plus />
                 </ListItemIcon>
