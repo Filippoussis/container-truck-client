@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
-import { Box, Button, Stack } from '@mui/material';
+import { Button, Box, Stack, Typography } from '@mui/material';
 import { router } from '@/router';
 import { useResetPasswordInit } from '@/api/users/mutations';
 import { RHFEmail } from '@/shared/components';
@@ -26,21 +26,26 @@ const ResetPasswordInitConsumer = () => {
   }, [isSuccess]);
 
   return (
-    <>
-      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={2}>
-          <RHFEmail label="Ваш Логин" placeholder="Введите свой Email" />
-          <Button variant="contained" type="submit" loading={isPending}>
-            Отправить
-          </Button>
-        </Stack>
-      </Box>
+    <Box>
+      <Typography
+        variant="h5"
+        component="h2"
+        sx={{ marginBottom: 4, textAlign: 'center' }}
+      >
+        Сброс пароля
+      </Typography>
+      <Stack component="form" spacing={2} onSubmit={handleSubmit(onSubmit)}>
+        <RHFEmail label="Ваш Логин" placeholder="Введите свой Email" />
+        <Button variant="contained" type="submit" loading={isPending}>
+          Отправить
+        </Button>
+      </Stack>
       <SuccessEmailConfirmModal
         open={open}
         email={getValues().email}
         onClose={onClose}
       />
-    </>
+    </Box>
   );
 };
 

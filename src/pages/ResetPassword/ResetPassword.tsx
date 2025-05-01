@@ -1,14 +1,21 @@
 import { Link, Outlet } from 'react-router-dom';
 import { Box, Button, Stack, Typography } from '@mui/material';
+import { Logo } from '@/components/Logo';
 
 export const ResetPassword = () => {
   return (
-    <Stack component="section" sx={{ height: '100%' }}>
-      <Typography variant="h4" mb={3}>
-        Сброс пароля
-      </Typography>
+    <Stack
+      component="section"
+      sx={{
+        height: '100%',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Box component="header" sx={{ textAlign: 'center' }}>
+        <Logo />
+      </Box>
       <Outlet />
-      <Box component="footer" sx={{ marginTop: 'auto', textAlign: 'center' }}>
+      <Box component="footer" sx={{ textAlign: 'center' }}>
         <Typography variant="body1">
           Вспомнили пароль?{' '}
           <Button variant="text">

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { jwtDecode } from 'jwt-decode';
-import { Box, Button, Stack } from '@mui/material';
+import { Button, Box, Stack, Typography } from '@mui/material';
 import { router } from '@/router';
 import { useRegisterComplete } from '@/api/users/mutations';
 import { RHFEmail, RHFPassword } from '@/shared/components';
@@ -42,27 +42,32 @@ const RegistrationCompleteConsumer = () => {
   }, [activateToken, setValue]);
 
   return (
-    <>
-      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={2}>
-          <RHFEmail label="Ваш Логин" disabled />
-          <RHFPassword
-            label="Ваш Пароль"
-            placeholder="Придумайте и введите Пароль"
-            autoFocus
-          />
-          <Button variant="contained" type="submit" loading={isPending}>
-            Создать учетную запись
-          </Button>
-        </Stack>
-      </Box>
+    <Box>
+      <Typography
+        variant="h5"
+        component="h2"
+        sx={{ marginBottom: 4, textAlign: 'center' }}
+      >
+        Регистрация аккаунта
+      </Typography>
+      <Stack component="form" spacing={2} onSubmit={handleSubmit(onSubmit)}>
+        <RHFEmail label="Ваш Логин" disabled />
+        <RHFPassword
+          label="Ваш Пароль"
+          placeholder="Придумайте и введите Пароль"
+          autoFocus
+        />
+        <Button variant="contained" type="submit" loading={isPending}>
+          Создать учетную запись
+        </Button>
+      </Stack>
       <SuccessPasswordConfirmModal
         open={open}
         title="Регистрация успешно завершена!"
         email={getValues().email}
         onClose={onClose}
       />
-    </>
+    </Box>
   );
 };
 
