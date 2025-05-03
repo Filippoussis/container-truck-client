@@ -1,6 +1,6 @@
-import { useMe } from '@/api/users/queries';
-import { useAuthState } from '@/services/AuthProvider';
 import { useEffect, useState } from 'react';
+import { useAuthState } from '@/services/AuthProvider';
+import { useMe } from '@/api/users/queries';
 
 interface Props {
   element: React.ReactElement;
@@ -21,5 +21,9 @@ export const PrivateRoute: React.FC<Props> = ({ element }) => {
     return element;
   }
 
-  return null;
+  return (
+    <p style={{ textAlign: 'center' }}>
+      Извините, сервер временно недоступен, попробуйте войти позднее...
+    </p>
+  );
 };
