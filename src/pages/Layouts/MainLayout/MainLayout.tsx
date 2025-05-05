@@ -17,7 +17,7 @@ export const MainLayout = () => {
         mb={2}
       >
         <Typography component={Link} variant="h3" to={'/'}>
-          LoLo
+          Test
         </Typography>
         <Stack direction="row" spacing={1}>
           {isRoot && (

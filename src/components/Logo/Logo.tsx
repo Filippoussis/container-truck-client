@@ -4,7 +4,7 @@ export const Logo = () => {
   return (
     <Stack>
       <Typography component="h1" variant="h3">
-        LoLo
+        Test
       </Typography>
       <Typography variant="caption">погрузка контейнеровозов</Typography>
     </Stack>
