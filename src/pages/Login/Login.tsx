@@ -28,6 +28,9 @@ const LoginConsumer = () => {
         <Box component="header" sx={{ textAlign: 'center' }}>
           <Logo />
         </Box>
+        <Typography variant="h4" color="error" sx={{ textAlign: 'center' }}>
+          Веб-сервис в тестовом режиме
+        </Typography>
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>
           <Typography
             variant="h5"

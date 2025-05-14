@@ -14,6 +14,9 @@ export const ResetPassword = () => {
       <Box component="header" sx={{ textAlign: 'center' }}>
         <Logo />
       </Box>
+      <Typography variant="h4" color="error" sx={{ textAlign: 'center' }}>
+        Веб-сервис в тестовом режиме
+      </Typography>
       <Outlet />
       <Box component="footer" sx={{ textAlign: 'center' }}>
         <Typography variant="body1">
